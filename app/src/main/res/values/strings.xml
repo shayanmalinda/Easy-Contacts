@@ -7,4 +7,6 @@
     <string name="company">Company</string>
     <string name="save">Save</string>
     <string name="edit">Edit</string>
+    <string name="enterdetails">Enter Contact Details</string>
+    <string name="editdetails">Edit Contact Details</string>
 </resources>
