@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewContactActivity"
+    tools:context=".EditContactActivity"
     android:orientation="vertical"
     android:padding="20dp">
     <LinearLayout
@@ -105,11 +105,11 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/save"
+            android:text="@string/edit"
             android:backgroundTint="@color/colorAccent"
             android:textColor="@color/colorWhite"
             android:textSize="19dp"
-            android:onClick="contactSave"
+            android:onClick="contactEdit"
             android:background="@drawable/bg_button"/>
 
     </LinearLayout>

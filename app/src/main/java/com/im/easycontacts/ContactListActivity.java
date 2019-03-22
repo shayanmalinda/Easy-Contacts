@@ -6,9 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ContactListActivity extends AppCompatActivity {
@@ -63,7 +65,7 @@ public class ContactListActivity extends AppCompatActivity {
         TextView company = v.findViewById(R.id.ContactCompany);
         String contactCompany = company.getText().toString();
 
-        Intent intent = new Intent(this,NewContactActivity.class);
+        Intent intent = new Intent(this,ViewContactActivity.class);
 
         intent.putExtra("name",contactName);
         intent.putExtra("phone",contactPhone);
@@ -72,6 +74,68 @@ public class ContactListActivity extends AppCompatActivity {
         intent.putExtra("company",contactCompany);
 
         startActivity(intent);
+
+    }
+
+    public void delete(View v){
+
+        LinearLayout parent = (LinearLayout) v.getParent();
+        LinearLayout parent2 = (LinearLayout) parent.getParent();
+        LinearLayout parent3 = (LinearLayout) parent2.getParent();
+
+
+        TextView name = parent3.findViewById(R.id.ContactID);
+        String contactId = name.getText().toString();
+
+        DBHelper mydb = new DBHelper(this);
+        SQLiteDatabase db = mydb.getWritableDatabase();
+
+        String sql;
+
+        sql = "DELETE FROM person WHERE _id='"+contactId+"'";
+
+        db.execSQL(sql);
+
+        Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
+        onResume();
+
+
+    }
+
+    public void edit(View v){
+
+        LinearLayout parent = (LinearLayout) v.getParent();
+        LinearLayout parent2 = (LinearLayout) parent.getParent();
+        LinearLayout parent3 = (LinearLayout) parent2.getParent();
+
+        TextView id = parent3.findViewById(R.id.ContactID);
+        String contactId = id.getText().toString();
+
+        TextView name = parent3.findViewById(R.id.ContactName);
+        String contactName = name.getText().toString();
+
+        TextView phone = parent3.findViewById(R.id.ContactPhone);
+        String contactPhone = phone.getText().toString();
+
+        TextView email = parent3.findViewById(R.id.ContactEmail);
+        String contactEmail = email.getText().toString();
+
+        TextView address = parent3.findViewById(R.id.ContactAddress);
+        String contactAddress = address.getText().toString();
+
+        TextView company = parent3.findViewById(R.id.ContactCompany);
+        String contactCompany = company.getText().toString();
+
+        Intent intent2 = new Intent(this,EditContactActivity.class);
+
+        intent2.putExtra("id",contactId);
+        intent2.putExtra("name",contactName);
+        intent2.putExtra("phone",contactPhone);
+        intent2.putExtra("email",contactEmail);
+        intent2.putExtra("address",contactAddress);
+        intent2.putExtra("company",contactCompany);
+
+        startActivity(intent2);
 
     }
 }

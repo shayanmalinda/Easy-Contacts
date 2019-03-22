@@ -13,7 +13,10 @@
         <ListView
             android:id="@+id/contactList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
         </ListView>
 
@@ -24,7 +27,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="25dp">
+        android:layout_margin="15dp">
 
         <ImageView
             android:layout_width="wrap_content"
